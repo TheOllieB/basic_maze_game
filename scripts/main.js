@@ -114,8 +114,15 @@ function drawMap() {
  function gameOver() {
      coinsLeft = document.querySelectorAll('.coin').length;
      const coinsCollected = 57 - coinsLeft;
-     document.getElementById("timer").innerHTML = "Well Done! You collected " + coinsCollected + " bitcoin! Try again?"
+     document.getElementById("timer").innerHTML = "Well Done! You collected " + coinsCollected + " Bitcoin! Try again?"
  }
+
+function countCoins(){
+    coinsLeft = document.querySelectorAll('.coin').length;
+     const coinsCollected = 57 - coinsLeft;
+    document.getElementById("counter").innerHTML = coinsCollected
+    console.log(coinsCollected);
+}
 
 
 // This function removes the map element from the page.
@@ -129,7 +136,7 @@ window.onload = function() {
   var hour = 1;
   var sec = 59;
   var timer = setInterval(function() {
-    document.getElementById("timer").innerHTML = hour + " : " + sec;
+    document.getElementById("timer").innerHTML ="You have " + hour + " : " + sec + "to collect all the Bitcoin!";
     sec--;
     if (sec == 0 && hour != 0) {
       hour--;
@@ -162,6 +169,7 @@ function moveDown() {
     gameData[hero.y][hero.x] = GROUND;
     hero.y = hero.y + 1 ;
     gameData[hero.y][hero.x] = HERO;
+    countCoins();
   }
 }
 
@@ -171,6 +179,7 @@ function moveUp() {
     gameData[hero.y][hero.x] = GROUND;
     hero.y = hero.y - 1;
     gameData[hero.y][hero.x] = HERO;
+    countCoins();
   }
 }
 
@@ -180,6 +189,7 @@ function moveLeft() {
     gameData[hero.y][hero.x] = GROUND;
     hero.x = hero.x - 1 ;
     gameData[hero.y][hero.x] = HERO;
+    countCoins();
   }
 }
 
@@ -189,6 +199,7 @@ function moveRight() {
     gameData[hero.y][hero.x] = GROUND;
     hero.x = hero.x + 1 ;
     gameData[hero.y][hero.x] = HERO;
+    countCoins();
   }
 }
 
